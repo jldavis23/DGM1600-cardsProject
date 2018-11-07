@@ -1,19 +1,16 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
 #card-container {
     display: flex;
     flex-wrap: wrap;
 }
 
 figure {
-    border: thin #c0c0c0 solid;
+    border: 1px solid #aaa;
+    padding: 8px;
+    background-color: #222;
     display: flex;
     flex-flow: column;
-    margin: 8px;
-    padding: 5px;
+    align-items: center;
+    justify-content: space-around;
 }
 
 img {
@@ -21,9 +18,5 @@ img {
 }
 
 figcaption {
-    background-color: #222;
     color: #fff;
-    font: italic smaller sans-serif;
-    padding: 3px;
-    text-align: center;
 }
