@@ -2,3 +2,28 @@
     margin: 0;
     padding: 0;
 }
+
+#card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+figure {
+    border: thin #c0c0c0 solid;
+    display: flex;
+    flex-flow: column;
+    margin: 8px;
+    padding: 5px;
+}
+
+img {
+    width: 200px;
+}
+
+figcaption {
+    background-color: #222;
+    color: #fff;
+    font: italic smaller sans-serif;
+    padding: 3px;
+    text-align: center;
+}
