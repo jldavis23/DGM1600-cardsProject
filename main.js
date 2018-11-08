@@ -1,6 +1,7 @@
 import { characters } from '/potter.js'
 
 let cardContainer = document.querySelector('#card-container')
+let wantedProps = ['house', "dateOfBirth", "ancestry", "patronus", "actor", "alive"]
 
 characters.forEach(character => {
     let scene = document.createElement('div')
@@ -39,13 +40,20 @@ characters.forEach(character => {
     propList.className = "prop-list"
     backDiv.appendChild(propList)
 
-    //below is a placeholder
-    let ul = document.createElement('ul')
-    propList.appendChild(ul)
+    for (let prop in character) {
+        if (wantedProps.includes(prop)) {
+            let ul = document.createElement('ul')
+            propList.appendChild(ul)
 
-    let li = document.createElement('li')
-    ul.appendChild(li)
-    //above is a placeholder
+            let propKey = document.createElement('li')
+            propKey.textContent = `${prop.charAt(0).toUpperCase() + prop.slice(1)}:`
+            ul.appendChild(propKey)
+            let propValue = document.createElement('li')
+            propValue.textContent = character[prop]
+            // console.log(`${prop.charAt(0).toUpperCase() + prop.slice(1)}:`)
+            ul.appendChild(propValue)
+        }
+    }
 
     card.addEventListener( 'click', function() {
         card.classList.toggle('is-flipped');

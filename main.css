@@ -6,11 +6,24 @@
 
 body {
     background-color: #222;
+    font-family: 'Playfair Display SC', serif;
+    color: #fff;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+h1 {
+    margin: 10px;
+    border-bottom: 1px solid rgb(199, 201, 204, 0.3);
+    width: 90%;
+    text-align: center;
 }
 
 #card-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .scene {
@@ -44,11 +57,11 @@ body {
     /* border: 1px solid rgb(224, 191, 83); */
     background-color: #000;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+    padding: 8px;
 }
 
 .front {
-    padding: 8px;
-    padding: 8px;
+    /* padding: 8px; */
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -61,10 +74,17 @@ img {
 
 figcaption {
     color: #fff;
+    font-weight: 600;
+    /* border: 2px solid #fff;
+    padding: 3px; */
 }
 
 .back {
     transform: rotateY(180deg);
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
 }
 
 .back-name-heading {
@@ -73,8 +93,15 @@ figcaption {
 
 ul {
     list-style: none;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    border-bottom: 1px solid rgb(199, 201, 204, 0.3);
+    padding: 3px;
 }
 
 li {
     color: #fff;
+    font-family: 'Adamina', serif;
+    font-size: 14px;
 }
