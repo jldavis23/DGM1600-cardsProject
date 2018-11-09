@@ -38,9 +38,10 @@ button {
 }
 
 #card-container {
-    display: flex;
+    /* display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center; */
+    text-align: center;
 }
 
 .scene {
@@ -50,6 +51,7 @@ button {
     height: 350px;
     margin: 10px;
     /* border: 1px solid #222; */
+    display: inline-block;
 }
 
 .card {
@@ -73,7 +75,7 @@ button {
     border-radius: 10px;
     /* border: 1px solid rgb(224, 191, 83); */
     background-color: #000;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.4);
     padding: 8px;
 }
 
@@ -121,4 +123,20 @@ li {
     color: #fff;
     font-family: 'Adamina', serif;
     font-size: 14px;
+}
+
+.Gryffindor {
+    background-color: #d84e3f;
+}
+
+.Slytherin {
+    background-color: #005d4b;
+}
+
+.Ravenclaw {
+    background-color: #22326a;
+}
+
+.Hufflepuff {
+    background-color: #fcb82d;
 }
