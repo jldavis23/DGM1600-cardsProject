@@ -7,7 +7,8 @@ let wantedProps = ['house', "dateOfBirth", "ancestry", "patronus", "actor", "ali
 let noneButton = document.querySelector("#none-button")
 let HouseButton = document.querySelector("#house-button")
 let studentsStaffButton = document.querySelector("#students-staff-button")
-let aliveDeadButton = document.querySelector("#alive-dead-button")
+let bloodStatusButton = document.querySelector("#blood-status-button")
+let buttonList = [noneButton, HouseButton, studentsStaffButton, bloodStatusButton]
 
 //MAIN FUNCTIONS --------------------------------------------------------------
 let removeCards = () => {
@@ -15,6 +16,7 @@ let removeCards = () => {
     while (removeDiv.firstChild) {
         removeDiv.removeChild(removeDiv.firstChild);
     }
+    buttonList.forEach(button => button.classList.remove('current-button'))
 }
 
 let createCards = (character) => {
@@ -76,6 +78,7 @@ let createCards = (character) => {
 
 let allCharacters = () => {
     removeCards();
+    noneButton.classList.add('current-button')
     characters.forEach(character => {
         createCards(character);
     })
@@ -92,6 +95,7 @@ let houses = ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"]
 
 let sortByHouse = () => {
     removeCards()
+    HouseButton.classList.add('current-button')
     houses.forEach(house => {
         let filteredByHouse = characters.filter(character => character.house === house)
         
@@ -111,9 +115,11 @@ HouseButton.addEventListener("click", sortByHouse)
 //Sort by Students and Staff 
 let sortByStudentStaff = () => {
     removeCards()
+    studentsStaffButton.classList.add('current-button')
     let students = characters.filter(character => character.hogwartsStudent === true)
 
     let studentHeading = document.createElement('h2')
+    studentHeading.classList.add('sort-heading')
     studentHeading.textContent = "Students"
     cardContainer.appendChild(studentHeading)
 
@@ -124,6 +130,7 @@ let sortByStudentStaff = () => {
     let staff = characters.filter(character => character.hogwartsStaff === true)
 
     let staffHeading = document.createElement('h2')
+    staffHeading.classList.add('sort-heading')
     staffHeading.textContent = "Staff"
     cardContainer.appendChild(staffHeading)
 
@@ -134,3 +141,31 @@ let sortByStudentStaff = () => {
 }
 
 studentsStaffButton.addEventListener("click", sortByStudentStaff)
+
+//Sort by Blood Status
+let bloodTypes = []
+characters.forEach(character => {
+    if (bloodTypes.includes(character.ancestry) === false) {
+        if (character.ancestry !== "")
+            bloodTypes.push(character.ancestry)
+    }
+})
+
+let sortbyBloodStatus = () => {
+    removeCards()
+    bloodStatusButton.classList.add('current-button')
+    bloodTypes.forEach(type => {
+        let filteredbyBlood = characters.filter(character => character.ancestry === type)
+        
+        let bloodName = document.createElement('h2')
+        bloodName.textContent = type
+        bloodName.classList.add("sort-heading")
+        cardContainer.appendChild(bloodName)
+
+        filteredbyBlood.forEach(character => {
+            createCards(character)
+        })
+    })
+}
+
+bloodStatusButton.addEventListener("click", sortbyBloodStatus)
