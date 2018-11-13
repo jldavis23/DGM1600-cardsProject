@@ -5,6 +5,7 @@
 }
 
 body {
+    padding: 10px;
     background-color: #222;
     font-family: 'Playfair Display SC', serif;
     color: #fff;
@@ -12,6 +13,8 @@ body {
     flex-flow: column;
     align-items: center;
 }
+
+/* HEADER */
 
 h1 {
     margin: 10px;
@@ -23,6 +26,8 @@ h1 {
 p {
     font-family: 'Adamina', serif;
 }
+
+/* FILTER BUTTONS */
 
 #button-container {
     border-bottom: 1px solid rgb(199, 201, 204, 0.3);
@@ -52,6 +57,8 @@ button:focus {
 .current-button {
     background-color: #aaa;
 }
+
+/* CARDS */
 
 #card-container {
     /* display: flex;
@@ -159,4 +166,27 @@ li {
 
 .sort-heading {
     background-color: #000;
+}
+
+/* ADD A CARD SECTION */
+
+#create-card-section {
+    border-radius: 5px;
+    background-color: #740001;
+    font-weight: 600;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputs {
+    font-size: 15px;
+    padding: 5px;
+    margin: 3px 0 10px 0;
+}
+
+#create-card-button {
+    padding: 5px;
+    font-size: 15px;
 }

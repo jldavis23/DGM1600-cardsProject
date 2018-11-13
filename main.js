@@ -19,7 +19,7 @@ let removeCards = () => {
     buttonList.forEach(button => button.classList.remove('current-button'))
 }
 
-let createCards = (character) => {
+let createCard = (character) => {
     let scene = document.createElement('div')
     scene.className = "scene"
     cardContainer.appendChild(scene)
@@ -80,7 +80,7 @@ let allCharacters = () => {
     removeCards();
     noneButton.classList.add('current-button')
     characters.forEach(character => {
-        createCards(character);
+        createCard(character);
     })
 }
 
@@ -105,7 +105,7 @@ let sortByHouse = () => {
         cardContainer.appendChild(houseName)
 
         filteredByHouse.forEach(character => {
-            createCards(character)
+            createCard(character)
         })
     })
 }
@@ -124,7 +124,7 @@ let sortByStudentStaff = () => {
     cardContainer.appendChild(studentHeading)
 
     students.forEach(student => {
-        createCards(student)
+        createCard(student)
     })
 
     let staff = characters.filter(character => character.hogwartsStaff === true)
@@ -135,7 +135,7 @@ let sortByStudentStaff = () => {
     cardContainer.appendChild(staffHeading)
 
     staff.forEach(person => {
-        createCards(person)
+        createCard(person)
     })
 
 }
@@ -163,9 +163,33 @@ let sortbyBloodStatus = () => {
         cardContainer.appendChild(bloodName)
 
         filteredbyBlood.forEach(character => {
-            createCards(character)
+            createCard(character)
         })
     })
 }
 
 bloodStatusButton.addEventListener("click", sortbyBloodStatus)
+
+//USER CREATES NEW CARDS --------------------------------------------------------------
+
+// let formName = document.querySelector('#form-name')
+// let formImg = document.querySelector('#form-img')
+let createCardButton = document.querySelector('#create-card-button')
+
+let userCard = {
+    "name":"John Doe",
+    "house":"Gryffindor",
+    "dateOfBirth":"31-07-1980",
+    "ancestry":"half-blood",
+    "patronus":"stag",
+    "hogwartsStudent":true,
+    "hogwartsStaff":false,
+    "actor":"Daniel Radcliffe",
+    "alive":true,
+    "image":"http://hp-api.herokuapp.com/images/harry.jpg"
+}
+
+createCardButton.addEventListener("click", () => {
+    characters.push(userCard)
+    return createCard(userCard)
+})
