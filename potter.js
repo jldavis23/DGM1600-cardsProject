@@ -547,5 +547,6 @@ export const characters = [
         "hogwartsStaff":true,
         "actor":"David Bradley",
         "alive":true,
-        "image":"http://hp-api.herokuapp.com/images/filch.jpg"}
+        "image":"http://hp-api.herokuapp.com/images/filch.jpg"
+    }
 ]

@@ -23,6 +23,10 @@ h1 {
     text-align: center;
 }
 
+#hogwarts-img {
+    width: 5%;
+}
+
 p {
     font-family: 'Adamina', serif;
 }
@@ -61,19 +65,14 @@ button:focus {
 /* CARDS */
 
 #card-container {
-    /* display: flex;
-    flex-wrap: wrap;
-    justify-content: center; */
     text-align: center;
 }
 
 .scene {
-    /* background-color: #222; */
     perspective: 600px;
     width: 200px;
     height: 350px;
     margin: 10px;
-    /* border: 1px solid #222; */
     display: inline-block;
 }
 
@@ -96,14 +95,12 @@ button:focus {
     position: absolute;
     backface-visibility: hidden;
     border-radius: 10px;
-    /* border: 1px solid rgb(224, 191, 83); */
     background-color: #000;
     box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.4);
     padding: 8px;
 }
 
 .front {
-    /* padding: 8px; */
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -117,8 +114,6 @@ img {
 figcaption {
     color: #fff;
     font-weight: 600;
-    /* border: 2px solid #fff;
-    padding: 3px; */
 }
 
 .back {
@@ -170,23 +165,12 @@ li {
 
 /* ADD A CARD SECTION */
 
-#create-card-section {
-    border-radius: 5px;
-    background-color: #740001;
-    font-weight: 600;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.inputs {
-    font-size: 15px;
-    padding: 5px;
-    margin: 3px 0 10px 0;
-}
-
 #create-card-button {
-    padding: 5px;
+    padding: 10px;
     font-size: 15px;
+    font-weight: 600;
+}
+
+.hide {
+    display:none;
 }

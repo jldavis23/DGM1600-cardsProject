@@ -9,6 +9,7 @@ let HouseButton = document.querySelector("#house-button")
 let studentsStaffButton = document.querySelector("#students-staff-button")
 let bloodStatusButton = document.querySelector("#blood-status-button")
 let buttonList = [noneButton, HouseButton, studentsStaffButton, bloodStatusButton]
+let createCardButton = document.querySelector('#create-card-button')
 
 //MAIN FUNCTIONS --------------------------------------------------------------
 let removeCards = () => {
@@ -20,6 +21,8 @@ let removeCards = () => {
 }
 
 let createCard = (character) => {
+    createCardButton.classList.remove('hide')
+
     let scene = document.createElement('div')
     scene.className = "scene"
     cardContainer.appendChild(scene)
@@ -108,6 +111,7 @@ let sortByHouse = () => {
             createCard(character)
         })
     })
+    createCardButton.classList.add('hide')
 }
 
 HouseButton.addEventListener("click", sortByHouse)
@@ -137,7 +141,7 @@ let sortByStudentStaff = () => {
     staff.forEach(person => {
         createCard(person)
     })
-
+    createCardButton.classList.add('hide')
 }
 
 studentsStaffButton.addEventListener("click", sortByStudentStaff)
@@ -166,30 +170,50 @@ let sortbyBloodStatus = () => {
             createCard(character)
         })
     })
+    createCardButton.classList.add('hide')
 }
 
 bloodStatusButton.addEventListener("click", sortbyBloodStatus)
 
 //USER CREATES NEW CARDS --------------------------------------------------------------
 
-// let formName = document.querySelector('#form-name')
-// let formImg = document.querySelector('#form-img')
-let createCardButton = document.querySelector('#create-card-button')
-
-let userCard = {
-    "name":"John Doe",
-    "house":"Gryffindor",
-    "dateOfBirth":"31-07-1980",
-    "ancestry":"half-blood",
-    "patronus":"stag",
-    "hogwartsStudent":true,
-    "hogwartsStaff":false,
-    "actor":"Daniel Radcliffe",
-    "alive":true,
-    "image":"http://hp-api.herokuapp.com/images/harry.jpg"
-}
+let count = 0;
 
 createCardButton.addEventListener("click", () => {
-    characters.push(userCard)
-    return createCard(userCard)
+    if (count === 0) {
+        let userCard = {
+            "name":"Newt Scamander",
+            "species":"human",
+            "gender":"male",
+            "house":"Hufflepuff",
+            "dateOfBirth":"24-02-1897",
+            "yearOfBirth":1897,
+            "ancestry":"half-blood or pure-blood",
+            "eyeColour":"blue",
+            "hairColour":"red brown",
+            "wand": {
+                "wood":"",
+                "core":"",
+                "length":""
+            },
+            "patronus":"",
+            "hogwartsStudent":false,
+            "hogwartsStaff":false,
+            "actor":"Eddie Redmayne",
+            "alive":true,
+            "image":"https://vignette.wikia.nocookie.net/harrypotter/images/4/43/NewtonScamander-Profile-crop.png/revision/latest?cb=20170112223036"
+        }
+            characters.push(userCard)
+            count++;
+            return createCard(userCard)
+    } else {
+        let userCard = {
+            "name": "Random Character",
+            "house": houses[Math.floor(Math.random()*houses.length)],
+            "image": "https://vignette.wikia.nocookie.net/jspotter/images/1/18/Hogwarts_Crest_1.png/revision/latest?cb=20140720035204"
+        }
+        characters.push(userCard)
+        count++;
+        return createCard(userCard)
+    }
 })
