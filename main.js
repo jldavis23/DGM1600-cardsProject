@@ -1,4 +1,4 @@
-import { characters } from '/potter.js'
+import { characters } from './potter.js'
 
 const cardContainer = document.querySelector('#card-container')
 let wantedProps = ['house', "dateOfBirth", "ancestry", "patronus", "actor", "alive"]
