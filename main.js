@@ -1,26 +1,26 @@
 import { characters } from '/potter.js'
 
-let cardContainer = document.querySelector('#card-container')
+const cardContainer = document.querySelector('#card-container')
 let wantedProps = ['house', "dateOfBirth", "ancestry", "patronus", "actor", "alive"]
 
 //BUTTONS
-let noneButton = document.querySelector("#none-button")
-let HouseButton = document.querySelector("#house-button")
-let studentsStaffButton = document.querySelector("#students-staff-button")
-let bloodStatusButton = document.querySelector("#blood-status-button")
-let buttonList = [noneButton, HouseButton, studentsStaffButton, bloodStatusButton]
-let createCardButton = document.querySelector('#create-card-button')
+const noneButton = document.querySelector("#none-button")
+const HouseButton = document.querySelector("#house-button")
+const studentsStaffButton = document.querySelector("#students-staff-button")
+const bloodStatusButton = document.querySelector("#blood-status-button")
+const buttonList = [noneButton, HouseButton, studentsStaffButton, bloodStatusButton]
+const createCardButton = document.querySelector('#create-card-button')
 
 //MAIN FUNCTIONS --------------------------------------------------------------
-let removeCards = () => {
-    let removeDiv = document.getElementById("card-container");
+const removeCards = () => {
+    let removeDiv = document.querySelector("#card-container");
     while (removeDiv.firstChild) {
         removeDiv.removeChild(removeDiv.firstChild);
     }
     buttonList.forEach(button => button.classList.remove('current-button'))
 }
 
-let createCard = (character) => {
+const createCard = (character) => {
     createCardButton.classList.remove('hide')
 
     let scene = document.createElement('div')
@@ -79,7 +79,7 @@ let createCard = (character) => {
     });
 }
 
-let allCharacters = () => {
+const allCharacters = () => {
     removeCards();
     noneButton.classList.add('current-button')
     characters.forEach(character => {
@@ -94,9 +94,9 @@ noneButton.addEventListener("click", allCharacters)
 //FILTER FUNCTIONS --------------------------------------------------------------
 
 //Sort by House
-let houses = ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"]
+const houses = ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"]
 
-let sortByHouse = () => {
+const sortByHouse = () => {
     removeCards()
     HouseButton.classList.add('current-button')
     houses.forEach(house => {
@@ -117,7 +117,7 @@ let sortByHouse = () => {
 HouseButton.addEventListener("click", sortByHouse)
 
 //Sort by Students and Staff 
-let sortByStudentStaff = () => {
+const sortByStudentStaff = () => {
     removeCards()
     studentsStaffButton.classList.add('current-button')
     let students = characters.filter(character => character.hogwartsStudent === true)
@@ -155,7 +155,7 @@ characters.forEach(character => {
     }
 })
 
-let sortbyBloodStatus = () => {
+const sortbyBloodStatus = () => {
     removeCards()
     bloodStatusButton.classList.add('current-button')
     bloodTypes.forEach(type => {
@@ -179,39 +179,35 @@ bloodStatusButton.addEventListener("click", sortbyBloodStatus)
 
 let count = 0;
 
+class UserCard {
+    constructor(name, species, gender, house, dateOfBirth, yearOfBirth, ancestry, eyeColour, hairColour, hogwartsStudent, hogwartsStaff, actor, alive, image) {
+        this.name = name
+        this.species = species
+        this.gender = gender
+        this.house = house
+        this.dateOfBirth = dateOfBirth
+        this.yearOfBirth = yearOfBirth
+        this.ancestry = ancestry
+        this.eyeColour = eyeColour
+        this.hairColour = hairColour
+        this.hogwartsStudent = hogwartsStudent
+        this.hogwartsStaff = hogwartsStaff
+        this.actor = actor
+        this.alive = alive
+        this.image = image
+    }
+}
+
 createCardButton.addEventListener("click", () => {
     if (count === 0) {
-        let userCard = {
-            "name":"Newt Scamander",
-            "species":"human",
-            "gender":"male",
-            "house":"Hufflepuff",
-            "dateOfBirth":"24-02-1897",
-            "yearOfBirth":1897,
-            "ancestry":"half-blood or pure-blood",
-            "eyeColour":"blue",
-            "hairColour":"red brown",
-            "wand": {
-                "wood":"",
-                "core":"",
-                "length":""
-            },
-            "patronus":"",
-            "hogwartsStudent":false,
-            "hogwartsStaff":false,
-            "actor":"Eddie Redmayne",
-            "alive":true,
-            "image":"https://vignette.wikia.nocookie.net/harrypotter/images/4/43/NewtonScamander-Profile-crop.png/revision/latest?cb=20170112223036"
-        }
-            characters.push(userCard)
-            count++;
-            return createCard(userCard)
+        let userCard = new UserCard("Newt Scamander", "human", "male", "Hufflepuff", "24-02-1897", 1897, "half-blood or pure-blood", "blue", "red brown", false, false, "Eddie Redmayne", true, "https://vignette.wikia.nocookie.net/harrypotter/images/4/43/NewtonScamander-Profile-crop.png/revision/latest?cb=20170112223036")
+        
+        characters.push(userCard)
+        count++;
+        return createCard(userCard)
     } else {
-        let userCard = {
-            "name": "Random Character",
-            "house": houses[Math.floor(Math.random()*houses.length)],
-            "image": "https://vignette.wikia.nocookie.net/jspotter/images/1/18/Hogwarts_Crest_1.png/revision/latest?cb=20140720035204"
-        }
+        let userCard = new UserCard("Random Character", "", "", houses[Math.floor(Math.random()*houses.length)], "", "", "", "", "", "", "", "", "", "https://vignette.wikia.nocookie.net/jspotter/images/1/18/Hogwarts_Crest_1.png/revision/latest?cb=20140720035204")
+
         characters.push(userCard)
         count++;
         return createCard(userCard)
